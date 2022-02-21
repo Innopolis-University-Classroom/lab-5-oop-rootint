@@ -15,185 +15,185 @@ using namespace std;
 //////////////////////////global  methods///////////////////////
 void getaLine(string& inStr);   // get line of text
 char getaChar();                // get a character
-///////////////////////////class tenant/////////////////////////
-class tenant
+///////////////////////////class Tenant/////////////////////////
+class Tenant
 {
 private:
     string name;    // tenant’s name
     int aptNumber;  // tenant’s apartment number
-    // other tenant information (phone, etc.) could go here
+    // other Tenant information (phone, etc.) could go here
 public:
-    tenant(string n, int aNo);
-    ~tenant();
+    Tenant(string n, int aNo);
+    ~Tenant();
     int getAptNumber();
     // needed for use in ‘set’
-    friend bool operator < (const tenant&, const tenant&);
-    friend bool operator == (const tenant&, const tenant&);
+    friend bool operator < (const Tenant&, const Tenant&);
+    friend bool operator == (const Tenant&, const Tenant&);
     // for I/O
-    friend ostream& operator << (ostream&, const tenant&);
-};  // end class tenant
-///////////////////////class compareTenants/////////////////////
-class compareTenants  //function object --  compares tenants
+    friend ostream& operator << (ostream&, const Tenant&);
+};  // end class Tenant
+///////////////////////class CompareTenants/////////////////////
+class CompareTenants  //function object --  compares tenants
 {
 public:
-    bool operator () (tenant*, tenant*) const;
+    bool operator () (Tenant*, Tenant*) const;
 };
-////////////////////////class tenantList////////////////////////
-class tenantList
+////////////////////////class TenantList////////////////////////
+class TenantList
 {
 private:
     // set of pointers to tenants
-    set<tenant*, compareTenants> setPtrsTens;
-    set<tenant*, compareTenants>::iterator iter;
+    set<Tenant*, CompareTenants> setPtrsTens;
+    set<Tenant*, CompareTenants>::iterator iter;
 public:
-    ~tenantList();               // destructor (deletes tenants)
-    void insertTenant(tenant*);  // put tenant on list
+    ~TenantList();               // destructor (deletes tenants)
+    void insertTenant(Tenant*);  // put Tenant on list
     int getAptNo(string);        // return apartment number
-    void display();              // display tenant list
-};  // end class tenantList
-/////////////////////class tenantInputScreen////////////////////
-class tenantInputScreen
+    void display();              // display Tenant list
+};  // end class TenantList
+/////////////////////class TenantInputScreen////////////////////
+class TenantInputScreen
 {
 private:
-    tenantList* ptrTenantList;
+    TenantList* ptrTenantList;
     string tName;
     int aptNo;
 public:
-    tenantInputScreen(tenantList* ptrTL) : ptrTenantList(ptrTL)
+    TenantInputScreen(TenantList* ptrTL) : ptrTenantList(ptrTL)
     { /* empty */ }
     void getTenant();
-};  //end class tenantInputScreen
-//////////////////////////class rentRow/////////////////////////
+};  //end class TenantInputScreen
+//////////////////////////class RentRow/////////////////////////
 // one row of the rent record: an address and 12 rent amounts
-class rentRow
+class RentRow
 {
 private:
     int aptNo;
     float rent[12];
 public:
-    rentRow(int);
+    RentRow(int);
     void setRent(int, float);
     float getSumOfRow();
     // needed to store in ‘set’
-    friend bool operator < (const rentRow&, const rentRow&);
-    friend bool operator == (const rentRow&, const rentRow&);
+    friend bool operator < (const RentRow&, const RentRow&);
+    friend bool operator == (const RentRow&, const RentRow&);
     // for output
-    friend ostream& operator << (ostream&, const rentRow&);
-};  // end class rentRow
+    friend ostream& operator << (ostream&, const RentRow&);
+};  // end class RentRow
 ////////////////////////////////////////////////////////////////
-class compareRows  //function object --  compares rentRows
+class CompareRows  //function object --  compares RentRows
 { public:
-    bool operator () (rentRow*, rentRow*) const;
+    bool operator () (RentRow*, RentRow*) const;
 };
-/////////////////////////class rentRecord///////////////////////
-class rentRecord
+/////////////////////////class RentRecord///////////////////////
+class RentRecord
 {
 private:
-    // set of pointers to rentRow objects (one per tenant)
-    set<rentRow*, compareRows> setPtrsRR;
-    set<rentRow*, compareRows>::iterator iter;
+    // set of pointers to RentRow objects (one per Tenant)
+    set<RentRow*, CompareRows> setPtrsRR;
+    set<RentRow*, CompareRows>::iterator iter;
 public:
-    ~rentRecord();
+    ~RentRecord();
     void insertRent(int, int, float);
     void display();
     float getSumOfRents();        // sum all rents in record
-};  // end class rentRecord
-/////////////////////////class rentInputScreen//////////////////
-class rentInputScreen
+};  // end class RentRecord
+/////////////////////////class RentInputScreen//////////////////
+class RentInputScreen
 {
 private:
-    tenantList* ptrTenantList;
-    rentRecord* ptrRentRecord;
+    TenantList* ptrTenantList;
+    RentRecord* ptrRentRecord;
     string renterName;
     float rentPaid;
     int month;
     int aptNo;
 public:
-    rentInputScreen(tenantList* ptrTL, rentRecord* ptrRR) :
+    RentInputScreen(TenantList* ptrTL, RentRecord* ptrRR) :
     ptrTenantList(ptrTL), ptrRentRecord(ptrRR)
     { /*empty*/ }
-    void getRent();           //rent for one tenant and one month
-};  // end class rentInputScreen
-////////////////////////////class expense///////////////////////
-class expense
+    void getRent();           //rent for one Tenant and one month
+};  // end class RentInputScreen
+////////////////////////////class Expense///////////////////////
+class Expense
 {
 public:
     int month, day;
     string category, payee;
     float amount;
-    expense()
+    Expense()
     {}
-    expense(int m, int d, string c, string p, float a) :
+    Expense(int m, int d, string c, string p, float a) :
     month(m), day(d), category(c), payee(p), amount(a)
     { /*empty */ }
     // needed for use in ‘set’
-    friend bool operator < (const expense&, const expense&);
-    friend bool operator == (const expense&, const expense&);
+    friend bool operator < (const Expense&, const Expense&);
+    friend bool operator == (const Expense&, const Expense&);
     // needed for output
-    friend ostream& operator << (ostream&, const expense&);
-};  // end class expense
+    friend ostream& operator << (ostream&, const Expense&);
+};  // end class Expense
 ////////////////////////////////////////////////////////////////
-class compareDates  //function object--compares expenses
+class CompareDates  //function object--compares Expenses
 { public:
-    bool operator () (expense*, expense*) const;
+    bool operator () (Expense*, Expense*) const;
 };
 ////////////////////////////////////////////////////////////////
-class compareCategories  //function object--compares expenses
+class CompareCategories  //function object--compares Expenses
 { public:
-    bool operator () (expense*, expense*) const;
+    bool operator () (Expense*, Expense*) const;
 };
-////////////////////////class expenseRecord/////////////////////
-class expenseRecord
+////////////////////////class ExpenseRecord/////////////////////
+class ExpenseRecord
 {
 private:
-    // vector of pointers to expenses
-    vector<expense*> vectPtrsExpenses;
-    vector<expense*>::iterator iter;
+    // vector of pointers to Expenses
+    vector<Expense*> vectPtrsExpenses;
+    vector<Expense*>::iterator iter;
 public:
-    ~expenseRecord();
-    void insertExp(expense*);
+    ~ExpenseRecord();
+    void insertExp(Expense*);
     void display();
-    float displaySummary(); // used by annualReport
-};  // end class expenseRecord
+    float displaySummary(); // used by AnnualReport
+};  // end class ExpenseRecord
 
-/////////////////////class expenseInputScreen///////////////////
-class expenseInputScreen
+/////////////////////class ExpenseInputScreen///////////////////
+class ExpenseInputScreen
 {
 private:
-    expenseRecord* ptrExpenseRecord;
+    ExpenseRecord* ptrExpenseRecord;
 public:
-    expenseInputScreen(expenseRecord*);
+    ExpenseInputScreen(ExpenseRecord*);
     void getExpense();
-};  // end class expenseInputScreen
-///////////////////////class annualReport///////////////////////
-class annualReport
+};  // end class ExpenseInputScreen
+///////////////////////class AnnualReport///////////////////////
+class AnnualReport
 {
 private:
-    rentRecord* ptrRR;
-    expenseRecord* ptrER;
-    float expenses, rents;
+    RentRecord* ptrRR;
+    ExpenseRecord* ptrER;
+    float Expenses, rents;
 public:
-    annualReport(rentRecord*, expenseRecord*);
+    AnnualReport(RentRecord*, ExpenseRecord*);
     void display();
-};  // end class annualReport
+};  // end class AnnualReport
 
 
-///////////////////////class userInterface//////////////////////
-class userInterface {
+///////////////////////class UserInterface//////////////////////
+class UserInterface {
 private:
-    tenantList* ptrTenantList;
-    tenantInputScreen* ptrTenantInputScreen;
-    rentRecord* ptrRentRecord;
-    rentInputScreen* ptrRentInputScreen;
-    expenseRecord* ptrExpenseRecord;
-    expenseInputScreen*  ptrExpenseInputScreen;
-    annualReport*        ptrAnnualReport;
+    TenantList* ptrTenantList;
+    TenantInputScreen* ptrTenantInputScreen;
+    RentRecord* ptrRentRecord;
+    RentInputScreen* ptrRentInputScreen;
+    ExpenseRecord* ptrExpenseRecord;
+    ExpenseInputScreen*  ptrExpenseInputScreen;
+    AnnualReport*        ptrAnnualReport;
     char ch;
 public:
-    userInterface();
-    ~userInterface();
+    UserInterface();
+    ~UserInterface();
     void interact();
-};  // end class userInterface
+};  // end class UserInterface
 //////////////////////////end file landlord.h//////////////////////
 
 #endif //LANDLORDPROJECT_LANDLORD_H

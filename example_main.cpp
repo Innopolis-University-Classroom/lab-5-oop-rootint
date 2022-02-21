@@ -8,8 +8,8 @@
 #include "landlord.h"
 
 int main() {
-    //    std::cout << "Hello, World!" << std::endl;
-    userInterface theUserInterface;
+       std::cout << "Hello, World!" << std::endl;
+    UserInterface theUserInterface;
     theUserInterface.interact();
     return 0;
 }

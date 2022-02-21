@@ -1,0 +1,11 @@
+{
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "files.associations": {
+        "vector": "cpp",
+        "*.tcc": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "functional": "cpp",
+        "set": "cpp"
+    }
+}

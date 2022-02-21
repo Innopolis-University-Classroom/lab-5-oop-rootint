@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/Users/random/github-classroom/Innopolis-University-Classroom/lab-5-oop-rootint/build",
+  "command": "/usr/bin/clang++   -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++2a -o CMakeFiles/main.dir/example_main.cpp.o -c /Users/random/github-classroom/Innopolis-University-Classroom/lab-5-oop-rootint/example_main.cpp",
+  "file": "/Users/random/github-classroom/Innopolis-University-Classroom/lab-5-oop-rootint/example_main.cpp"
+},
+{
+  "directory": "/Users/random/github-classroom/Innopolis-University-Classroom/lab-5-oop-rootint/build",
+  "command": "/usr/bin/clang++   -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++2a -o CMakeFiles/landlord.dir/landlord.cpp.o -c /Users/random/github-classroom/Innopolis-University-Classroom/lab-5-oop-rootint/landlord.cpp",
+  "file": "/Users/random/github-classroom/Innopolis-University-Classroom/lab-5-oop-rootint/landlord.cpp"
+}
+]

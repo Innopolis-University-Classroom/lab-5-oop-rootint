@@ -1,0 +1,4 @@
+/Users/random/github-classroom/Innopolis-University-Classroom/lab-5-oop-rootint/build/CMakeFiles/main.dir
+/Users/random/github-classroom/Innopolis-University-Classroom/lab-5-oop-rootint/build/CMakeFiles/landlord.dir
+/Users/random/github-classroom/Innopolis-University-Classroom/lab-5-oop-rootint/build/CMakeFiles/edit_cache.dir
+/Users/random/github-classroom/Innopolis-University-Classroom/lab-5-oop-rootint/build/CMakeFiles/rebuild_cache.dir
